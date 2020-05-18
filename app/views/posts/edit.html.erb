@@ -1,0 +1,53 @@
+<div class="edit-whole-area">
+  <div class="edit-content-area"> <%# ② %>
+    <div class="edit-post-area">
+      <%= form_for @post do |f| %>
+      <table class="access-table">
+        <tbody>
+          <tr>
+            <th class="table-left">
+              <p class="titlename">タイトル</p>
+            </th>
+            <th class="table-right">
+              <%= f.text_field :title,class: "title-form" %><span class="margin-right first none"></span><%= f.radio_button :who, "現役"  %><%= f.label :who_現役, :現役,class: "labelbtn_geneki" %><span class="margin-right"></span><%= f.radio_button :who, "OB" %><%= f.label :who_ob, :OB,class: "labelbtn_ob" %></span>
+            </th>
+          </tr>
+          <tr>
+            <th class="table-left">
+              <p>名前</p>
+            </th>
+            <th class="table-right ">
+              <%= f.text_field :name,class: "name-form" %><span class="margin-right first"></span><%= f.number_field :term,class: "term-form" %><%= f.label :term, :期 %>
+            </th>
+          </tr>
+          <tr>
+            <th class="table-left">
+              <p>内容</p>
+            </th>
+            <th class="table-right">
+              <%= f.text_area :body,class: "body-form"%>
+              <%#  :size=>"20×10"%>
+            </th>
+          </tr>
+          <tr>
+            <th class="table-left">
+              <p>URL</p>
+            </th>
+            <th class="table-right">
+              <%= f.text_field :url,class: "url-form" %>
+            </th>
+          </tr>
+          <tr>
+            <th class="table-left">
+              <p>画像</p>
+            </th>
+            <th class="table-right submit">
+              <%= f.file_field :picture,class: "picture-form" %><%= f.submit "投稿する",class: "submit-btn"%>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

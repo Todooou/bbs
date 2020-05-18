@@ -1,0 +1,25 @@
+<div class="comment-page">
+
+  <div class="comment-post">
+    <p class="title">
+      <%= @post.title %></p>
+    <div class="second">
+      <%= @post.name %>
+      <%= @post.who %>
+      <p> : <%= @post.term %>期</p>
+    </div><br>
+    <div class="body-contents">
+      <%= simple_format(@post.body) %><br>
+      <%= text_url_to_link(h( @post.url )).html_safe %><br>
+      <%= image_tag @post.picture_url %><br>
+    </div>
+  </div>
+
+  <div class="edit-comment-area">
+    <%= form_with model: @comment, url: { action: :update }, html: { class: 'cardeditForm' }, local: true do |f| %>
+    <%= f.text_area :content, class: "comment-form-control", placeholder: "コメント内容" %>
+    <%= f.submit "編集する", class: "submitBtn" %>
+    <% end %>
+  </div>
+
+</div>

@@ -1,0 +1,117 @@
+<div class="whole-area"> <%# ② %>
+  <div class="content-area">  <%#  ②-①%>
+    <div class="post-content-area"> <%# ②-② %>
+      <%# 
+      ⭕️.Postモデルの投稿の編集機能実装 edit.html.erbの作成 4/19
+      ⭕️.Postモデルの投稿の削除機能実装 destroyアクションの追加 4/19
+      ⭕️.Commentモデルの投稿の編集機能実装 edit.html.erbの作成 4/19
+      ⭕️.Commentモデルの投稿の削除機能実装 destroyアクションの追加 4/19
+      ⭕️.ページネーション https://qiita.com/rio_threehouse/items/313824b90a31268b0074 4/22
+      ⭕️.サイドバー（Twitterとかインスタ）4/25
+      ❌.いいね機能  https://qiita.com/MandoNarin/items/c4e310e2501a5dd58268
+      .デザイン https://www.pinterest.jp/pin/803329652256080970/ 5/1
+      %>
+      <div class="formarea"> <%# ③%>
+        <%= form_for(@post, :url => { controller:'posts', action:'create'})do |f| %>
+              <table class="access-table">
+                <tbody>
+                  <tr>
+                    <th class="table-left">
+                      <p class="titlename">タイトル</p>
+                    </th>
+                    <th class="table-right title">
+                      <%= f.text_field :title,class: "title-form" %><span class="margin-right first none"></span><%= f.radio_button :who, "現役"  %><%= f.label :who_現役, :現役,class: "labelbtn_geneki" %><span class="margin-right"></span><%= f.radio_button :who, "OB" %><%= f.label :who_ob, :OB,class: "labelbtn_ob" %></span>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th class="table-left">
+                      <p>名前</p>
+                    </th>
+                    <th class="table-right ">
+                      <%= f.text_field :name,class: "name-form" %><span class="margin-right first"></span><%= f.number_field :term,class: "term-form" %><%= f.label :term, :期 %> 
+                    </th>
+                  </tr>
+                  <tr>
+                    <th class="table-left">
+                      <p>内容</p>
+                    </th>
+                    <th class="table-right">
+                      <%= f.text_area :body,class: "body-form"%>
+                      <%#  :size=>"20×10"%>
+                      
+                    </th>
+                  </tr>
+                  <tr>
+                    <th class="table-left">
+                      <p>URL</p>
+                    </th>
+                    <th class="table-right">
+                      <%= f.text_field :url,class: "url-form" %>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th class="table-left">
+                      <p>画像</p>
+                    </th>
+                    <th class="table-right submit">
+                      <%#= f.label :picture, "画像を選択", class: "picture_input_btn "%>
+                      <%= f.file_field :picture,class: "picture-form" %><%= f.submit "投稿する",class: "submit-btn"%>
+                    </th>
+                  </tr>
+                </tbody>
+              </table>
+        <% end %>
+      </div> 
+      <div class="posts-container">  <%# ③%>
+        <% @posts.each do |t| %>
+          <div class="post">
+            <p class="titles">
+              <%= t.title %>
+            </p>
+              <div class="second">
+                <%= t.name %>
+                <%= t.who %>
+                <p> : <%= t.term %>期</p>
+              </div><br>
+              <div class="body-contents">
+                <%= simple_format(t.body) %><br>
+                <%= text_url_to_link(h( t.url )).html_safe %><br>
+                <%=  link_to t.picture.url, 'data-lightbox': t.picture do %>
+                  <%= image_tag t.picture.url if t.picture? %>
+                <% end %>
+                <%#  image_tag t.picture_url %>
+              </div> 
+              <div class = "icons" >
+                    <p class="datetime"><%= t.created_at.to_s(:datetime_jp) %></p>
+                    <%= link_to(content_tag(:i,'',class: 'far fa-edit content-icon'), edit_post_path(t)) %>
+                    <%#= link_to "編集する", edit_post_path(t.id) %>
+                    <%#= link_to "削除する", post_path(t.id), method: :delete %>
+                    <%#= link_to "削除する", post_path(t.id), method: :delete, data: {confirm: "削除しますか？"} %>
+                    <%= link_to(content_tag(:i,'',class: 'far fa-trash-alt content-icon'), post_path(t), method: :delete, data: {confirm: "削除しますか？"}) %>
+                    <%= link_to(content_tag(:i,'',class: 'fas fa-reply content-icon'), new_post_comment_path(t)) %>
+              </div>
+              <div class="comment-area">
+                  <% t.comments.each do |comment| %><br>
+                    <div class="comment-contents">
+                      <p><i class="fas fa-caret-left"></i></p>
+                      <%= comment.content %>
+                    </div>
+                      <div class="comment-icon">
+                          <%#= link_to "編集する", edit_post_comment_path(t,comment) %>
+                          <%= link_to(content_tag(:i,'',class: 'far fa-edit content-icon'), edit_post_comment_path(t,comment)) %>
+                          <%#= link_to "削除する", post_comment_path(t,comment), method: :delete %>
+                          <%= link_to(content_tag(:i,'',class: 'far fa-trash-alt content-icon'), post_comment_path(t,comment), method: :delete, data: {confirm: "削除しますか？"}) %>
+                          <%#= link_to "削除する", post_comment_path(t,comment), method: :delete, data: {confirm: "削除しますか？"} %>
+                      </div>
+                  <% end %>   
+              </div> 
+          </div>       
+        <% end %>
+      </div>
+      <%= paginate @posts %>
+    </div>
+    <div class="Tweet-infoarea"> <%# ②-② %>
+    <a class="twitter-timeline" data-chrome=”transparentnoheadernofooter”  data-theme="light" data-border-color="#cccccc" href="https://twitter.com/opurowing?ref_src=twsrc%5Etfw">Tweets by opurowing</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+  </div>
+</div>

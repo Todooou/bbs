@@ -1,0 +1,28 @@
+<div class="comment-page">
+
+  <div class="comment-post">
+    <p class="title">
+      <%= @post.title %></p>
+    <div class="second">
+      <%= @post.name %>
+      <%= @post.who %>
+      <p> : <%= @post.term %>期</p>
+    </div><br>
+    <div class="body-contents">
+      <%= simple_format(@post.body) %><br>
+      <%= text_url_to_link(h( @post.url )).html_safe %><br>
+      <%= image_tag @post.picture_url %><br>
+    </div>
+  </div>
+
+  <div class="comment-area">
+    <%= form_with model: @comment, url: { action: :create }, html: { class: 'cardnewForm' }, local: true do |f| %>
+    <%= f.hidden_field :post_id, value: @post.id %>
+    <div class="cardnewForm_title">
+      <%= f.text_area :content, autofocus: true, class: "comment-form-control", placeholder: "コメントを入力する" %>
+      <%= f.submit "投稿する", class: "comment-submitBtn" %>
+    </div>
+    <% end %>
+  </div>
+
+</div>

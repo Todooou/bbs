@@ -1,0 +1,66 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+  /*ページネーション自体のデザイン*/
+ul.pagination {
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.pagination>li>a {   
+  display: block;       
+  border: none;     /*枠線をなくす*/
+  color: #6A0E1A ;  /*文字の色を変える*/
+  border-radius: 20px;
+  background-color: rgba(255,255,255,0.85);
+  margin: 3px;
+  font-size: 15px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: rgba(150,27,52,0.8);     /*背景の色を変える*/
+  border-radius: 20px;     /*角を丸くする*/
+  /*font-weight: bold;*/
+}
+
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 20px;    /*角を丸くする*/
+  color:#6A0E1A;
+  background-color: rgba(255,255,255,0.95);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all  0.3s ease;
+}
+
+.pagination>.active>a:hover {     
+  border-radius: 20px;     /*角を丸くする*/
+  background-color:#6A0E1A;
+  color:#ffffff;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all  0.3s ease;
+} 
+
+
+  @import "font-awesome-sprockets";
+  @import "font-awesome";
