@@ -77,8 +77,9 @@
                 <%= simple_format(t.body) %><br>
                 <%= text_url_to_link(h( t.url )).html_safe %><br>
                 <%=  link_to t.picture.url, 'data-lightbox': t.picture do %>
-                  <%= image_tag t.picture.url if t.picture? %>
-                  <%#= cl_image_path("myImage.jpg", :cloud_name => todooou) %>
+                  <%= image_tag t.picture.url , :cloud_name => "todooou" if t.picture? %>
+                  <%#= image_tag t.picture.url if t.picture? %>
+                  <%#= cl_image_path("myImage.jpg", :cloud_name => todooou %>
                 <% end %>
                 <%#  image_tag t.picture_url %>
               </div> 
