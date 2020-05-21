@@ -15,52 +15,52 @@
  */
 
 
-  /*ページネーション自体のデザイン*/
+/*ページネーション自体のデザイン*/
 ul.pagination {
-    margin: auto;
-    margin-top: 15px;
-    margin-bottom: 15px;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 .pagination>li>a {   
-  display: block;       
-  border: none;     /*枠線をなくす*/
-  color: #6A0E1A ;  /*文字の色を変える*/
-  border-radius: 20px;
-  background-color: rgba(255,255,255,0.85);
-  margin: 3px;
-  font-size: 15px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+display: block;       
+border: 1px solid #fff;     /*枠線をなくす*/
+color: #fff ;  /*文字の色を変える*/
+
+background-color: rgba(255,255,255,0.2);
+margin: 3px;
+font-size: 15px;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
 }
 
 /* 表示しているページ番号のデザイン */
 .pagination>.active>a {     
-  background: rgba(150,27,52,0.8);     /*背景の色を変える*/
-  border-radius: 20px;     /*角を丸くする*/
-  /*font-weight: bold;*/
+background: rgba(150,27,52,0.8);     /*背景の色を変える*/
+border: 1px solid #fff;
+/*font-weight: bold;*/
 }
 
 
 /*ホバー時のデザイン*/
 .pagination>li>a:hover {        
-  border-radius: 20px;    /*角を丸くする*/
-  color:#6A0E1A;
-  background-color: rgba(255,255,255,0.95);
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all  0.3s ease;
+
+color:#6A0E1A;
+background-color: rgba(255,255,255,0.8);
+-webkit-transition: all 0.3s ease;
+-moz-transition: all 0.3s ease;
+-o-transition: all 0.3s ease;
+transition: all  0.3s ease;
 }
 
 .pagination>.active>a:hover {     
-  border-radius: 20px;     /*角を丸くする*/
-  background-color:#6A0E1A;
-  color:#ffffff;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all  0.3s ease;
+background-color:#6A0E1A;
+border: 1px solid #fff;
+color:#ffffff;
+-webkit-transition: all 0.3s ease;
+-moz-transition: all 0.3s ease;
+-o-transition: all 0.3s ease;
+transition: all  0.3s ease;
 } 
 
 
-  @import "font-awesome-sprockets";
-  @import "font-awesome";
+@import "font-awesome-sprockets";
+@import "font-awesome";
