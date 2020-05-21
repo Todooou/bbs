@@ -25,16 +25,19 @@
 
   <body>
     <%# ここにSlackでお送りした<head>たぐをぶちこんでください！ %>
-    <header>
-　     <div class="header-title">大阪府立大学漕艇部BBS</div>
+  <header>
+    　 <div class="header-left">
+          <h1 class="header-title">大阪府立大学漕艇部BBS</h1>
+          <h2 class="header-second-title"> Osaka Prefecture University Rowing Club</h2>
+      </div>
 
-        <div class="header-icons">
+      <div class="header-icons">
 
           <span class="fa-stack fa-2x">
             <%= link_to("/") do %>
             <i class="fas fa-circle fa-stack-2x "></i>
             <i class="fas fa-home fa-stack-1x fa-inverse"></i></span>
-          <% end %>  
+          <% end %>
           <span class="fa-stack fa-2x">
             <%= link_to("https://opurowingonline.wixsite.com/opurc") do %>
             <i class="fas fa-circle fa-stack-2x "></i>
@@ -44,7 +47,7 @@
             <%= link_to("https://twitter.com/opurowing") do %>
             <i class="fas fa-circle fa-stack-2x "></i>
             <i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span>
-          <% end %>  
+          <% end %>
 
           <span class="fa-stack fa-2x">
             <%= link_to("https://www.instagram.com/opu_rowing.mg/") do %>
@@ -57,8 +60,8 @@
             <i class="fas fa-circle fa-stack-2x "></i>
             <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i></span>
           <% end %>
-        </div>
-    </header> 
+      </div>
+  </header>
     <%= yield %>
   </body>
 </html>
