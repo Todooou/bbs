@@ -568,16 +568,22 @@ input.submitBtn {
         height: 62px;
         align-items: unset;
     }
+    input#post_url {
+        margin-bottom: 2px;
+    }
     input.submit-btn {
         width: 120px;
-        margin-right: 3%;
+        margin-right: 4%;
+    }
+    input#post_picture {
+        margin-left: 4%;
     }
     .Tweet-infoarea {
         width: 100%;
         height: 400px;
     }
     .comment-page {
-        width: 90%
+        width: 90%;
     }
     .fa-stack {
         width: 2.3em !important;
