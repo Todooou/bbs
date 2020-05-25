@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
         #Comment.find(params[:id]).destroy
         #redirect_to :root
 
-        @comment = Comment.find_by(params[:id])
+        @comment = Comment.find(params[:id])
         if @comment.destroy
             redirect_to :root
         else
