@@ -566,9 +566,11 @@ input.submitBtn {
     th.table-right.submit {
         flex-direction: column; /*上下にバーン*/
         height: 62px;
+        align-items: unset;
     }
     input.submit-btn {
         width: 120px;
+        margin-right: 3%;
     }
     .Tweet-infoarea {
         width: 100%;
