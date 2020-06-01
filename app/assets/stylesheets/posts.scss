@@ -142,6 +142,13 @@ img {
     filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.2));
 } 
 
+.fa-home:active,
+.fa-twitter:active
+.fa-instagram:active,
+.fa-facebook-f:active,
+.fa-desktop:active {
+    color: rgba(150,27,52,0.8);
+}
 
 
 
