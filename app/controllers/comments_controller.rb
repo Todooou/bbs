@@ -35,9 +35,6 @@ class CommentsController < ApplicationController
 
 
     def destroy
-        #Comment.find(params[:id]).destroy
-        #redirect_to :root
-
         @comment = Comment.find(params[:id])
         if @comment.destroy
             redirect_to :root

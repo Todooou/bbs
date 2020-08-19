@@ -2,7 +2,6 @@ class PostsController < ApplicationController
     def new
         @post = Post.new
         @posts = Post.all.order(created_at: :desc).page(params[:page]).per(10)
-
     end
 
     def create
