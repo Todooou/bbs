@@ -72,7 +72,7 @@
               <p> : <%= t.term %> 期</p>
             </div><br>
             <div class="body-contents">
-              <%= simple_format(h(t.body)).html_safe %><br>
+              <%= simple_format(h(t.body)) %><br>
               <%= text_url_to_link(h( t.url )).html_safe %><br>
               <%= link_to t.picture.url, 'data-lightbox': t.picture do %>
               <%= image_tag t.picture.url if t.picture? %>
