@@ -10,18 +10,24 @@
                 <p class="titlename">タイトル</p>
               </th>
               <th class="table-right title">
-                <%= f.text_field :title,class: "title-form" %><span
-                  class="margin-right first none"></span><%= f.radio_button :who, "現役"  %><%= f.label :who_現役, :現役,class: "labelbtn_geneki" %><span
-                  class="margin-right"></span><%= f.radio_button :who, "OB" %><%= f.label :who_ob, :OB,class: "labelbtn_ob" %></span>
+                <%= f.text_field :title,class: "title-form" %>
+                <span class="margin-right first none"></span>
+                <%= f.radio_button :who, "現役"  %>
+                <%= f.label :who_現役, :現役,class: "labelbtn_geneki" %>
+                <span class="margin-right"></span>
+                <%= f.radio_button :who, "OB" %>
+                <%= f.label :who_ob, :OB,class:"labelbtn_ob" %>
               </th>
             </tr>
             <tr>
               <th class="table-left">
                 <p>名前</p>
               </th>
-              <th class="table-right ">
-                <%= f.text_field :name,class: "name-form" %><span
-                  class="margin-right first"></span><%= f.number_field :term, class: "term-form" %><%= f.label :term, :期 %>
+              <th class="table-right">
+                <%= f.text_field :name,class: "name-form" %>
+                <span class="margin-right first"></span>
+                <%= f.number_field :term, class: "term-form" %>
+                <%= f.label :term, :期 %>
               </th>
             </tr>
             <tr>
@@ -29,9 +35,7 @@
                 <p>内容</p>
               </th>
               <th class="table-right">
-                <%= f.text_area :body,class: "body-form"%>
-                <%#  :size=>"20×10"%>
-
+                <%= f.text_area :body,class:"body-form"%>
               </th>
             </tr>
             <tr>
@@ -39,7 +43,7 @@
                 <p>URL</p>
               </th>
               <th class="table-right">
-                <%= f.text_field :url,class: "url-form" %>
+                <%= f.text_field :url,class:"url-form" %>
               </th>
             </tr>
             <tr>
@@ -47,7 +51,8 @@
                 <p>画像</p>
               </th>
               <th class="table-right submit">
-                <%= f.file_field :picture,class: "picture-form" %><%= f.submit "投稿する",class: "submit-btn"%>
+                <%= f.file_field :picture,class:"picture-form" %>
+                <%= f.submit "投稿する",class:"submit-btn"%>
               </th>
             </tr>
           </tbody>
@@ -67,16 +72,16 @@
               <p> : <%= t.term %> 期</p>
             </div><br>
             <div class="body-contents">
-              <%= simple_format(h(t.body)) %><br>
-              <%= text_url_to_link(h( t.url )).html_safe, data: {confirm: "リンクへ移動しますか？"})%><br>
-              <%=  link_to t.picture.url, 'data-lightbox': t.picture do %>
+              <%= simple_format(h(t.body)).html_safe %><br>
+              <%= text_url_to_link(h( t.url )).html_safe %><br>
+              <%= link_to t.picture.url, 'data-lightbox': t.picture do %>
               <%= image_tag t.picture.url if t.picture? %>
               <% end %>
             </div>
             <div class="icons">
               <p class="datetime"><%= t.created_at.to_s(:datetime_jp) %></p>
               <%= link_to(content_tag(:i,'',class: 'far fa-edit content-icon'), edit_post_path(t)) %>
-              <%= link_to(content_tag(:i,'',class: 'far fa-trash-alt content-icon'), post_path(t), method: :delete, data: {confirm: "削除しますか？"}) %>
+              <%= link_to(content_tag(:i,'',class: 'far fa-trash-alt content-icon'), post_path(t), method: :delete, data:{confirm:"削除しますか？"}) %>
               <%= link_to(content_tag(:i,'',class: 'fas fa-reply content-icon'), new_post_comment_path(t)) %>
             </div>
             <div class="comment-area">
@@ -85,7 +90,7 @@
                 <i class="fas fa-caret-right"></i> <%= comment.content %>
                 <div class="comment-icon">
                   <%= link_to(content_tag(:i,'',class: 'far fa-edit content-icon'), edit_post_comment_path(t,comment)) %>
-                  <%= link_to(content_tag(:i,'',class: 'far fa-trash-alt content-icon'), post_comment_path(t,comment), method: :delete, data: {confirm: "削除しますか？"}) %>
+                  <%= link_to(content_tag(:i,'',class: 'far fa-trash-alt content-icon'), post_comment_path(t,comment), method: :delete, data:{confirm:"削除しますか？"}) %>
                 </div>
               </div>
               <% end %>
@@ -97,8 +102,7 @@
       <%= paginate @posts %>
     </div>
     <div class="Tweet-infoarea"> <%# ②-② %>
-      <a class="twitter-timeline" data-chrome=”transparentnoheadernofooter”　data-border-color=”#ffffff”
-        href="https://twitter.com/opurowing?ref_src=twsrc%5Etfw">Tweets by opurowing</a>
+      <a class="twitter-timeline" data-chrome=”transparentnoheadernofooter” data-border-color=”#ffffff” href="https://twitter.com/opurowing?ref_src=twsrc%5Etfw">Tweets by opurowing</a>
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
   </div>
