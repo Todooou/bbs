@@ -64,4 +64,3 @@ gem 'font-awesome-sass', '~> 5.12.0'
 group :production do
   gem 'pg'
 end
-gem 'devise'
