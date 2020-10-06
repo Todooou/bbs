@@ -92,16 +92,15 @@ img {
     width: 190px;
 }
 //変更
+
 .header-left {
-    margin-left: 14%;
-    text-align: center;
     font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN',sans-serif;
     letter-spacing: 0.5px;
+    
 }
 .header-title { 
     font-size: 25px;
     color: #ffffff;
-    border-bottom: 1px solid rgba(255,255,255,0.7);
     padding-bottom:5px;
     padding-top:1px;
     margin: 0px 0px 5px 0px;
@@ -116,8 +115,7 @@ img {
 
 
 .header-icons {
-    margin: 0 0 0 auto;
-    margin-right:12%;
+ text-align: right;
 }
 .fa-twitter,
 .fa-home,
@@ -246,7 +244,7 @@ input[type="submit"]{
     box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255,255,255,0.8);
     padding: 7px;
-    width: 22%;
+    width: 30%;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
@@ -294,16 +292,16 @@ input#post_picture {
 }
 
 .edit_post {
-    width: 45%;
-    height: 370px;
-    margin: 0 auto;
-    background-color:rgba(255,255,255,0.15);
-    mix-blend-mode: normal;
-    box-sizing: border-box;
-    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.4);
-    padding-top: 17px;
-    border-radius: 2px;
-    border: 1px solid #fff;
+  width: 45%;
+  height: 370px;
+  margin: 0 auto;
+  background-color:rgba(255,255,255,0.15);
+  mix-blend-mode: normal;
+  box-sizing: border-box;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.4);
+  padding-top: 17px;
+  border-radius: 2px;
+  border: 1px solid #fff;
 }
 
 
@@ -315,7 +313,6 @@ input#post_picture {
     margin: 0px 0px;
     border-radius: 2px;
     flex-wrap: wrap;
-    margin-top: 15px;
 }
 .post {
     //border: 1px solid #F5F5F5;
@@ -419,7 +416,45 @@ input.submitBtn {
     font-weight: bold;
 }
 
-
+//投稿リンク・ログインリンク//
+.toko1 {
+  display: flex;
+  width: 100%;
+  margin: auto;
+}
+.to-ko- {
+  border: 1px solid #CCC;
+  text-align: center;
+  background-color: rgba(255,255,255,0.2);
+  width: 100%;
+  padding: 15px;
+  display: block;
+}
+.toko2 a {
+  color: white;
+}
+.toko {
+  margin: 0 auto;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.toko2 {
+  flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+      position: relative;
+      width: 100%;
+}
+.toko2 :hover {
+  background-color: rgba(255,255,255,0.7);
+  width: 100%;
+  transition: 0.3s;
+  text-decoration:none;
+}
+.toko2 a:hover {
+  color: #046484;
+}
 //Twitter//
 .Tweet-infoarea {
     width: 30%;
@@ -439,12 +474,27 @@ input.submitBtn {
     width: 100%;
 }
 
+// header //
+header {
+  width: 70%;
+  margin: 0 auto;
+}
+
+
+
 
 // スマホ時
 @media screen and (max-width:900px) {
+  .header-title { 
+    margin: 0 auto;
+    border: none;
+}
     .content-area {
         width: 95%;
-        
+    }
+    header {
+      width: 95%;
+      margin: 0 auto;
     }
     .post-content-area {
         width: 100%;
@@ -482,8 +532,10 @@ input.submitBtn {
         margin-left: 0%;
     }
     .header-icons {
-        margin-right: 2.4%;
-    }
+      size: 30px;
+      margin: 0 auto;
+       text-align: center;
+  }
     .header-left {
         margin-left:1%;
     }
@@ -502,7 +554,6 @@ input.submitBtn {
         margin-bottom:2px;
     }
     .header-icons {
-        size: 30px;
         margin: 0 auto;
     }
     input#post_title {

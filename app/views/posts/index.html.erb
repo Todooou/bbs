@@ -1,1 +1,75 @@
-<p>This page is no means</p>
+<div class="whole-area"> <%# ② %>
+  <div class="content-area"> <%#  ②-①%>
+    <div class="post-content-area"> <%# ②-② %>
+      <div class="posts-container"> <%# ③%>
+        
+          <div class="toko1">
+            <div class="toko2">
+              <%= link_to "投稿する", new_post_path, class:"to-ko-"%>
+            </div>
+            <% if user_signed_in? %>
+            <div class="toko2">
+              <%= link_to"ログアウト", destroy_user_session_path, method: :delete,class:"to-ko-" %>
+            </div>
+            <div class="toko2">
+              <%= link_to"ユーザー編集", edit_user_registration_path, class:"to-ko-" %>
+            </div>
+            <% else %>
+            <div class="toko2">
+              <%= link_to"ログイン", new_user_session_path ,class:"to-ko-"%>
+            </div>
+            <% end %>
+          </div>
+        
+        <% @posts.each do |t| %>
+        <div class="post">
+          <div class="titles">
+            <i class="fas fa-square-full"> <%= t.title %></i>
+          </div>
+          <div class="seconds">
+            <div class="second">
+              <%= t.user.username %>
+              <%= t.who %>
+              <%= t.user.term %>期
+            </div><br>
+            <div class="body-contents">
+              <%= simple_format(h(t.body)) %><br>
+              <%= text_url_to_link(h( t.url )).html_safe %><br>
+              <%= link_to t.picture.url, 'data-lightbox': t.picture do %>
+              <%= image_tag t.picture.url if t.picture? %>
+              <% end %>
+            </div>
+            <% if user_signed_in? && t.user.id==current_user.id%>
+            <div class="icons">
+              <p class="datetime"><%= t.created_at.to_s(:datetime_jp) %></p>
+              <%= link_to(content_tag(:i,'',class: 'far fa-edit content-icon'), edit_post_path(t)) %>
+              <%= link_to(content_tag(:i,'',class: 'far fa-trash-alt content-icon'), post_path(t), method: :delete, data:{confirm:"削除しますか？"}) %>
+              <%= link_to(content_tag(:i,'',class: 'fas fa-reply content-icon'), new_post_comment_path(t)) %>
+            </div>
+            <% end %>
+            <div class="comment-area">
+              <% t.comments.each do |comment| %><br>
+              <div class="comment-contents">
+                <i class="fas fa-caret-right"></i> <%= comment.content %>
+                <% if user.sign_in && comment.user_id == current_user.id%>
+                <div class="comment-icon">
+                  <%= link_to(content_tag(:i,'',class: 'far fa-edit content-icon'), edit_post_comment_path(t,comment)) %>
+                  <%= link_to(content_tag(:i,'',class: 'far fa-trash-alt content-icon'), post_comment_path(t,comment), method: :delete, data:{confirm:"削除しますか？"}) %>
+                </div>
+                <% end %>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <%= paginate @posts %>
+    </div>
+    <div class="Tweet-infoarea"> <%# ②-② %>
+      <a class="twitter-timeline" data-chrome=”transparentnoheadernofooter” data-border-color=”#ffffff”
+        href="https://twitter.com/opurowing?ref_src=twsrc%5Etfw">Tweets by opurowing</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+  </div>
+</div>

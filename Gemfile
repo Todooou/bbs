@@ -60,7 +60,10 @@ gem 'cloudinary'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'kaminari'
 gem 'font-awesome-sass', '~> 5.12.0'
+gem 'devise'
 
 group :production do
   gem 'pg'
 end
+
+

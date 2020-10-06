@@ -1,16 +1,21 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!,except:[:index]
     def new
         @post = Post.new
-        @posts = Post.all.order(created_at: :desc).page(params[:page]).per(10)
     end
-
     def create
         @post = Post.new(post_params)
+        @post.user_id = current_user.id
         if @post.save
-            redirect_to action: "new"        
+            redirect_to action: "index"        
         else
             redirect_to action: "new"
         end
+    end
+
+    def index
+      @posts = Post.all.order(created_at: :desc).page(params[:page]).per(10)
+      
     end
 
     def edit
@@ -39,6 +44,6 @@ class PostsController < ApplicationController
 
     private
         def post_params
-            params.require(:post).permit(:body,:picture,:name,:who,:url,:title,:term) 
+            params.require(:post).permit(:body,:picture,:who,:url,:title) 
         end
 end
