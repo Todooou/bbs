@@ -4,12 +4,11 @@
     <i class="title">
       <i class="fas fa-square-full"> <%= @post.title %></i>
     <div class="second">
-      <%= @post.name %>
+      <%= @post.user.username %>
       <%= @post.who %>
-      <p> : <%= @post.term %>期</p>
     </div><br>
     <div class="body-contents">
-      <%= simple_format(@post.body) %><br>
+      <%= simple_format(h(@post.body)) %><br>
       <%= text_url_to_link(h( @post.url )).html_safe %><br>
       <%= image_tag @post.picture_url %><br>
     </div>

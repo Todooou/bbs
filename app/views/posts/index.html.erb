@@ -44,17 +44,19 @@
               <p class="datetime"><%= t.created_at.to_s(:datetime_jp) %></p>
               <%= link_to(content_tag(:i,'',class: 'far fa-edit content-icon'), edit_post_path(t)) %>
               <%= link_to(content_tag(:i,'',class: 'far fa-trash-alt content-icon'), post_path(t), method: :delete, data:{confirm:"削除しますか？"}) %>
+              <% end %>
               <%= link_to(content_tag(:i,'',class: 'fas fa-reply content-icon'), new_post_comment_path(t)) %>
             </div>
-            <% end %>
             <div class="comment-area">
-              <% t.comments.each do |comment| %><br>
+              <% t.comments.each do |c| %><br>
               <div class="comment-contents">
-                <i class="fas fa-caret-right"></i> <%= comment.content %>
-                <% if user.sign_in && comment.user_id == current_user.id%>
+                <i class="fas fa-caret-right"></i> 
+                <%= c.user.username %><br>
+                <%= simple_format(h(c.content)) %><br>
                 <div class="comment-icon">
-                  <%= link_to(content_tag(:i,'',class: 'far fa-edit content-icon'), edit_post_comment_path(t,comment)) %>
-                  <%= link_to(content_tag(:i,'',class: 'far fa-trash-alt content-icon'), post_comment_path(t,comment), method: :delete, data:{confirm:"削除しますか？"}) %>
+                  <%= link_to(content_tag(:i,'',class: 'far fa-edit content-icon'), edit_post_comment_path(t,c)) %>
+                  <% if user_signed_in? && c.user_id == current_user.id %>
+                  <%= link_to(content_tag(:i,'',class: 'far fa-trash-alt content-icon'), post_comment_path(t,c), method: :delete, data:{confirm:"削除しますか？"}) %>
                 </div>
                 <% end %>
               </div>

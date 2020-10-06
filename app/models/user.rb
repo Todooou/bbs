@@ -6,6 +6,6 @@ class User < ApplicationRecord
   validates :term, presence: true #追記
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  has_many :comments, dependent: :destroy
 
 end

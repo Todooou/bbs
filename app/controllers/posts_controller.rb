@@ -7,7 +7,7 @@ class PostsController < ApplicationController
         @post = Post.new(post_params)
         @post.user_id = current_user.id
         if @post.save
-            redirect_to action: "index"        
+            redirect_to allection: "index"        
         else
             redirect_to action: "new"
         end
@@ -15,7 +15,6 @@ class PostsController < ApplicationController
 
     def index
       @posts = Post.all.order(created_at: :desc).page(params[:page]).per(10)
-      
     end
 
     def edit
