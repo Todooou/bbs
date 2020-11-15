@@ -1,26 +1,26 @@
-<div class="whole-area"> <%# ② %>
-  <div class="content-area"> <%#  ②-①%>
-    <div class="post-content-area"> <%# ②-② %>
-      <div class="posts-container"> <%# ③%>
-        
-          <div class="toko1">
-            <div class="toko2">
-              <%= link_to "投稿する", new_post_path, class:"to-ko-"%>
-            </div>
-            <% if user_signed_in? %>
-            <div class="toko2">
-              <%= link_to"ログアウト", destroy_user_session_path, method: :delete,class:"to-ko-" %>
-            </div>
-            <div class="toko2">
-              <%= link_to"ユーザー編集", edit_user_registration_path, class:"to-ko-" %>
-            </div>
-            <% else %>
-            <div class="toko2">
-              <%= link_to"ログイン", new_user_session_path ,class:"to-ko-"%>
-            </div>
-            <% end %>
+<div class="whole-area">
+  <div class="content-area">
+    <div class="post-content-area">
+      <div class="posts-container">
+
+        <div class="toko1">
+          <div class="toko2">
+            <%= link_to "投稿する", new_post_path, class:"to-ko-"%>
           </div>
-        
+          <% if user_signed_in? %>
+          <div class="toko2">
+            <%= link_to"ログアウト", destroy_user_session_path, method: :delete,class:"to-ko-" %>
+          </div>
+          <div class="toko2">
+            <%= link_to"ユーザー編集", edit_user_registration_path, class:"to-ko-" %>
+          </div>
+          <% else %>
+          <div class="toko2">
+            <%= link_to"ログイン", new_user_session_path ,class:"to-ko-"%>
+          </div>
+          <% end %>
+        </div>
+
         <% @posts.each do |t| %>
         <div class="post">
           <div class="titles">
@@ -39,9 +39,9 @@
               <%= image_tag t.picture.url if t.picture? %>
               <% end %>
             </div>
-            <% if user_signed_in? && t.user.id==current_user.id%>
             <div class="icons">
               <p class="datetime"><%= t.created_at.to_s(:datetime_jp) %></p>
+              <% if user_signed_in? && t.user.id==current_user.id%>
               <%= link_to(content_tag(:i,'',class: 'far fa-edit content-icon'), edit_post_path(t)) %>
               <%= link_to(content_tag(:i,'',class: 'far fa-trash-alt content-icon'), post_path(t), method: :delete, data:{confirm:"削除しますか？"}) %>
               <% end %>
@@ -50,15 +50,15 @@
             <div class="comment-area">
               <% t.comments.each do |c| %><br>
               <div class="comment-contents">
-                <i class="fas fa-caret-right"></i> 
+                <i class="fas fa-caret-right"></i>
                 <%= c.user.username %><br>
-                <%= c.content%><br>
+                <%= simple_format(h(c.content)) %><br>
                 <div class="comment-icon">
-                  <%= link_to(content_tag(:i,'',class: 'far fa-edit content-icon'), edit_post_comment_path(t,c)) %>
                   <% if user_signed_in? && c.user_id == current_user.id %>
-                  <%= link_to(content_tag(:i,'',class: 'far fa-trash-alt content-icon'), post_comment_path(t,c), method: :delete, data:{confirm:"削除しますか？"}) %>
+                    <%= link_to(content_tag(:i,'',class: 'far fa-edit content-icon'), edit_post_comment_path(t,c)) %>
+                    <%= link_to(content_tag(:i,'',class: 'far fa-trash-alt content-icon'), post_comment_path(t,c), method: :delete, data:{confirm:"削除しますか？"}) %>
+                  <% end %>
                 </div>
-                <% end %>
               </div>
               <% end %>
             </div>
