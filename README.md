@@ -12,8 +12,8 @@ Easily postable
 
 
 ## Requirement
-・Ruby  2.6.2
-・Rails 6.0.3.3
-・Google Maps Javascript API
+-Ruby  2.6.2
+-Rails 6.0.3.3
+-Google Maps API
 
 
