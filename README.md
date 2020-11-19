@@ -1,15 +1,26 @@
 # *🚣‍♀️ 大阪府立大学漕艇部BBS*
 
-## 🌐 App URL
+## 🌐 アプリURL
 ### **https://opurowingbbs.herokuapp.com/**
 
-## 🚣‍♀️Description
-`opurowingbbs` is a web site for the rowing club members of Osaka Prefecture University.
-For example, you can post the result of a match.
+![bbss](https://user-images.githubusercontent.com/65103547/99609277-e4d85600-2a52-11eb-8c9e-0c89e7af55a9.jpg)
 
-### Features
-Easily postable
+## 🚣‍♀️アプリの概要
+`opurowingbbs` は大阪府立大学漕艇部のための掲示板サイトです。
+試合結果のお知らせなどを投稿します。
 
+### 機能
+- 投稿、編集、削除機能
+- ログイン機能
+- 画像投稿機能
+- コメント機能
+
+## 力を入れたところ
+- このサイトを使う前の掲示板と同じレイアウトにした
+- 背景をオリジナル写真にした（部活の練習場所）
+- 体育会らしいかっこいいデザインにした
+- 期を入力することで、投稿の際に入力する手間を省いた
+- セキュリティのためにログイン機能を搭載
 
 ## 💻Requirement
 - Ruby  2.6.2
