@@ -10,8 +10,8 @@
 試合結果のお知らせなどを投稿します。
 
 ## ✏️テストアカウント
-`Mail:`test@t.com
-`Pass:`test123
+- `Mail:`test@t.com
+- `Pass:`test123
 
 ### 機能
 - 投稿、編集、削除機能
