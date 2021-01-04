@@ -15,7 +15,6 @@ class CommentsController < ApplicationController
         end
     end
 
-
     def edit
         @comment = Comment.find_by(id: params[:id])
         @post = Post.find_by(id: params[:post_id])
